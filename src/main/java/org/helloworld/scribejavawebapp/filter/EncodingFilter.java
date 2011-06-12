@@ -1,13 +1,9 @@
-package org.helloworld.scribejavawebapp;
+package org.helloworld.scribejavawebapp.filter;
 
 import javax.servlet.*;
 import java.io.IOException;
 
-/**
- * User: hal
- * Date: 12.06.2011
- * Time: 12:53:57
- */
+
 public class EncodingFilter
         implements Filter {
 
