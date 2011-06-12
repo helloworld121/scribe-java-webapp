@@ -14,11 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * User: hal
- * Date: 12.06.2011
- * Time: 16:43:39
- */
+
 public class StartOAuthProcessServlet
         extends HttpServlet {
 

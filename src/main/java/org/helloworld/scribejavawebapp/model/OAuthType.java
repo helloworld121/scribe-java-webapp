@@ -3,11 +3,7 @@ package org.helloworld.scribejavawebapp.model;
 import org.scribe.builder.api.Api;
 import org.scribe.builder.api.GoogleApi;
 
-/**
- * User: hal
- * Date: 12.06.2011
- * Time: 16:38:06
- */
+
 public enum OAuthType {
 
     GOOGLE("google", GoogleApi.class, "anonymous", "anonymous",

@@ -4,11 +4,7 @@ import org.scribe.builder.ServiceBuilder;
 import org.scribe.builder.api.GoogleApi;
 import org.scribe.oauth.OAuthService;
 
-/**
- * User: hal
- * Date: 12.06.2011
- * Time: 16:48:58
- */
+
 public class ScribeServiceBuilderProvider {
 
     public static OAuthService getOAuthService(OAuthType type) {
