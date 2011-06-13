@@ -18,6 +18,14 @@ public class ScribeServiceBuilderProvider {
                     .callback(type.getCallback())
                     .build();
             return service;
+        } else if(type == OAuthType.YAHOO) {
+            OAuthService service = new ServiceBuilder()
+                    .provider(type.getApiClass())
+                    .apiKey(type.getApiKey())
+                    .apiSecret(type.getApiSecret())
+                    .callback(type.getCallback())
+                    .build();
+            return service;
         } else {
             throw new IllegalArgumentException("Unsupported type: " + type.getName());
         }

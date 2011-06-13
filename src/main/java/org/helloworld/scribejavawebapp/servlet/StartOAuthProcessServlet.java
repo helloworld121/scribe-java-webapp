@@ -47,7 +47,8 @@ public class StartOAuthProcessServlet
         req.getSession().setAttribute("user", user);
 
 
-        String redirect = type.getAuthorizeUrl() + token.getToken();
+//        String redirect = type.getAuthorizeUrl() + token.getToken();
+        String redirect = service.getAuthorizationUrl(token);
         log.info("Redirect URL: " + redirect);
 
         res.sendRedirect(redirect);

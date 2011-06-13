@@ -1,5 +1,6 @@
 package org.helloworld.scribejavawebapp.servlet;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.helloworld.scribejavawebapp.model.ScribeServiceBuilderProvider;
@@ -24,6 +25,8 @@ public class CallbackOAuthProcessServlet
             throws ServletException, IOException {
         log.info("Calling CallbackOAuthProcessServlet.doGet()");
 
+        log.info("URL: " + fullRequestUrl(req));
+
         User user = (User) req.getSession().getAttribute("user");
 
         OAuthService service = ScribeServiceBuilderProvider.getOAuthService(user.getOAuthType());
@@ -38,14 +41,26 @@ public class CallbackOAuthProcessServlet
 
         OAuthRequest request = new OAuthRequest(Verb.GET, user.getOAuthType().getRequestUrl());
         service.signRequest(accessToken, request);
-        request.addHeader("GData-Version", "3.0");
-//        request.addHeader("GData-Version", "2.0");
+        if(StringUtils.isNotBlank(user.getOAuthType().getHeaderName())) {
+            request.addHeader(user.getOAuthType().getHeaderName(), user.getOAuthType().getHeaderValue());
+//            request.addHeader("GData-Version", "3.0");
+        }
         Response response = request.send();
 
         log.info("Response: ");
         log.info(response.getCode());
         log.info(response.getBody());
 
+    }
+
+    private String fullRequestUrl(HttpServletRequest request) {
+        String reqUrl = request.getRequestURL().toString();
+        String queryString = request.getQueryString();
+        if (queryString != null) {
+            reqUrl += "?"+queryString;
+        }
+
+        return reqUrl;
     }
 
 }
