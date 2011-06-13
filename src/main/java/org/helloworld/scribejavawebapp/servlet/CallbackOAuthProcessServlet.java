@@ -1,12 +1,9 @@
 package org.helloworld.scribejavawebapp.servlet;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.helloworld.scribejavawebapp.model.ScribeServiceBuilderProvider;
-import org.helloworld.scribejavawebapp.model.User;
-import org.scribe.model.*;
-import org.scribe.oauth.OAuthService;
+import org.scribe.webapp.oauth.boundary.OAuthService;
+import org.scribe.webapp.oauth.boundary.OAuthUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +22,29 @@ public class CallbackOAuthProcessServlet
             throws ServletException, IOException {
         log.info("Calling CallbackOAuthProcessServlet.doGet()");
 
+        log.info("URL: " + fullRequestUrl(req));
+
+        OAuthUser user = (OAuthUser) req.getSession().getAttribute("user");
+
+        String oAuthVerifier = req.getParameter("oauth_verifier");
+        user.setOAuthVerifier(oAuthVerifier);
+        log.info("oAuthVerifier: " + oAuthVerifier);
+
+        String oAuthToken = req.getParameter("oauth_token");
+        log.info("oAuthToken: " + oAuthToken);
+
+
+        // calling service
+        OAuthService service = new OAuthService();
+        user = service.readingUserData(user);
+
+        // put it to session
+        req.getSession().setAttribute("user", user);
+
+
+
+
+        /*
         log.info("URL: " + fullRequestUrl(req));
 
         User user = (User) req.getSession().getAttribute("user");
@@ -50,6 +70,7 @@ public class CallbackOAuthProcessServlet
         log.info("Response: ");
         log.info(response.getCode());
         log.info(response.getBody());
+        */
 
     }
 
