@@ -3,15 +3,22 @@ package org.helloworld.scribejavawebapp.model;
 import org.scribe.builder.api.Api;
 import org.scribe.builder.api.GoogleApi;
 
-
 public enum OAuthType {
 
     GOOGLE("google", GoogleApi.class, "anonymous", "anonymous",
-            "https://docs.google.com/feeds/",
+            "http://www.google.com/m8/feeds/",
             "http://localhost:8080/callbackoauth",
             "https://www.google.com/accounts/OAuthAuthorizeToken?oauth_token=",
-            "https://docs.google.com/feeds/default/private/full/")
+            "http://www.google.com/m8/feeds/contacts/default/full")
     ;
+    
+
+//    GOOGLE("google", GoogleApi.class, "anonymous", "anonymous",
+//            "https://docs.google.com/feeds/",
+//            "http://localhost:8080/callbackoauth",
+//            "https://www.google.com/accounts/OAuthAuthorizeToken?oauth_token=",
+//            "https://docs.google.com/feeds/default/private/full/")
+//    ;
 
     private String name;
     private Class<? extends Api> apiClass;

@@ -39,6 +39,7 @@ public class CallbackOAuthProcessServlet
         OAuthRequest request = new OAuthRequest(Verb.GET, user.getOAuthType().getRequestUrl());
         service.signRequest(accessToken, request);
         request.addHeader("GData-Version", "3.0");
+//        request.addHeader("GData-Version", "2.0");
         Response response = request.send();
 
         log.info("Response: ");
