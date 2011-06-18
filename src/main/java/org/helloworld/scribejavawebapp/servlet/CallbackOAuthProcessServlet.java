@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scribe.webapp.oauth.boundary.OAuthService;
 import org.scribe.webapp.oauth.boundary.OAuthUser;
+import org.scribe.webapp.oauth.boundary.exception.OAuthProviderException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +37,18 @@ public class CallbackOAuthProcessServlet
 
         // calling service
         OAuthService service = new OAuthService();
-        user = service.readingUserData(user);
+        try {
+            user = service.readingUserData(user);
+        } catch (OAuthProviderException e) {
+            log.error(e.getMessage(), e);
+            throw new ServletException(e);
+        }
+
+
+        // Logging
+        log.info("Username: " + user.getFullName());
+        log.info("eMail: " + user.getEMail());
+
 
         // put it to session
         req.getSession().setAttribute("user", user);

@@ -7,7 +7,7 @@ import org.scribe.webapp.oauth.boundary.OAuthType;
  * Date: 13.06.2011
  * Time: 20:23:06
  */
-public class ProviderFactory {
+public class FactoryProvider {
 
     public static Provider getProvider(OAuthType oAuthType) {
         if(oAuthType == null) {

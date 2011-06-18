@@ -1,6 +1,7 @@
 scribe-java-webapp.iml
 
 target
+tmp
 
 tmp.xml
 links.txt

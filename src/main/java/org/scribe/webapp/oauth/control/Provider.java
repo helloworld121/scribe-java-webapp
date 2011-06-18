@@ -1,6 +1,7 @@
 package org.scribe.webapp.oauth.control;
 
 import org.scribe.webapp.oauth.boundary.OAuthUser;
+import org.scribe.webapp.oauth.boundary.exception.OAuthProviderException;
 
 /**
  * User: hal
@@ -11,6 +12,7 @@ public interface Provider {
 
     public void buildRedirectUrl(OAuthUser user);
 
-    public void readUserData(OAuthUser user);
+    public void readUserData(OAuthUser user)
+            throws OAuthProviderException;
 
 }

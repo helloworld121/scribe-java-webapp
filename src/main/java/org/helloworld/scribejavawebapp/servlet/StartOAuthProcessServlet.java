@@ -42,35 +42,6 @@ public class StartOAuthProcessServlet
         // do redirect
         log.info("Redirect URL: " + user.getOAuthAuthorizationUrl());
         res.sendRedirect(user.getOAuthAuthorizationUrl());
-
-
-        /*
-        String provider = req.getParameter("provider");
-
-        OAuthType type = OAuthType.getOAuthTypeByName(provider);
-
-        OAuthService service = ScribeServiceBuilderProvider.getOAuthService(type);
-
-        Token token = service.getRequestToken();
-        log.info("requestToken: " + token);
-
-        log.info("put RequestToken to session");
-        Object attribute = req.getSession().getAttribute("user");
-        User user;
-        if(attribute == null) {
-            user = new User();
-        } else {
-            user = (User) attribute;
-        }
-        user.setOAuthType(type);
-        user.setOAuthRequestToken(token);
-        req.getSession().setAttribute("user", user);
-
-        String redirect = service.getAuthorizationUrl(token);
-        log.info("Redirect URL: " + redirect);
-
-        res.sendRedirect(redirect);
-        */
     }
 
 }

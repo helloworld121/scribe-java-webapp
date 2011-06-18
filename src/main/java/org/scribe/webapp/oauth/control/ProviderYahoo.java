@@ -8,7 +8,7 @@ import org.scribe.webapp.oauth.boundary.OAuthUser;
  * Time: 21:40:37
  */
 public class ProviderYahoo
-        implements Provider {
+        extends AbstractProvider {
 
 
     public void buildRedirectUrl(OAuthUser user) {
