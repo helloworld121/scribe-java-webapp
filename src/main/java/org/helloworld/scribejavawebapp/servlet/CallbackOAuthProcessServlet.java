@@ -46,43 +46,15 @@ public class CallbackOAuthProcessServlet
 
 
         // Logging
-        log.info("Username: " + user.getFullName());
-        log.info("eMail: " + user.getEMail());
+        log.info("User: providerUserId => " + user.getProviderUserId());
+        log.info("User: name => " + user.getName());
+        log.info("User: eMail => " + user.getEMail());
 
 
         // put it to session
         req.getSession().setAttribute("user", user);
 
-
-
-
-        /*
-        log.info("URL: " + fullRequestUrl(req));
-
-        User user = (User) req.getSession().getAttribute("user");
-
-        OAuthService service = ScribeServiceBuilderProvider.getOAuthService(user.getOAuthType());
-
-        String oAuthVerifier = req.getParameter("oauth_verifier");
-        log.info("oAuthVerifier: " + oAuthVerifier);
-        String oAuthToken = req.getParameter("oauth_token");
-        log.info("oAuthToken: " + oAuthToken);
-
-        Verifier verifier = new Verifier(oAuthVerifier);
-        Token accessToken = service.getAccessToken(user.getOAuthRequestToken(), verifier);
-
-        OAuthRequest request = new OAuthRequest(Verb.GET, user.getOAuthType().getRequestUrl());
-        service.signRequest(accessToken, request);
-        if(StringUtils.isNotBlank(user.getOAuthType().getHeaderName())) {
-            request.addHeader(user.getOAuthType().getHeaderName(), user.getOAuthType().getHeaderValue());
-//            request.addHeader("GData-Version", "3.0");
-        }
-        Response response = request.send();
-
-        log.info("Response: ");
-        log.info(response.getCode());
-        log.info(response.getBody());
-        */
+        res.sendRedirect("index.html");
 
     }
 

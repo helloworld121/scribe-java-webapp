@@ -10,7 +10,8 @@ import org.scribe.model.Token;
 public class OAuthUser {
 
     // parameter
-    private String fullName;
+    private String providerUserId;
+    private String name;
     private String eMail;
 
     // type
@@ -26,19 +27,28 @@ public class OAuthUser {
     private String oAuthAuthorizationUrl;
 
 
+
+    public String getProviderUserId() {
+        return providerUserId;
+    }
+    public void setProviderUserId(String providerUserId) {
+        this.providerUserId = providerUserId;
+    }
+    
+
     public String getEMail() {
         return eMail;
     }
     public void setEMail(String eMail) {
         this.eMail = eMail;
     }
-    
 
-    public String getFullName() {
-        return fullName;
+
+    public String getName() {
+        return name;
     }
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setName(String name) {
+        this.name = name;
     }
 
 

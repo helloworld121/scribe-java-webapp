@@ -34,7 +34,12 @@ public class StartOAuthProcessServlet
 
         // using service
         OAuthService service = new OAuthService();
-        user = service.addAuthorizationUrl(user);
+        try {
+            user = service.addAuthorizationUrl(user);
+        } catch(Exception e) {
+            log.error(e.getMessage(), e);
+            throw new ServletException(e);
+        }
 
         // put user into session
         req.getSession().setAttribute("user", user);
