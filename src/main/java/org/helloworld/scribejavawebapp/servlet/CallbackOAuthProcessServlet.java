@@ -47,6 +47,7 @@ public class CallbackOAuthProcessServlet
 
         // Logging
         log.info("User: providerUserId => " + user.getProviderUserId());
+        log.info("User: nickname => " + user.getNickname());
         log.info("User: name => " + user.getName());
         log.info("User: eMail => " + user.getEMail());
 

@@ -8,7 +8,8 @@ package org.scribe.webapp.oauth.boundary;
 public enum OAuthType {
 
     GOOGLE("google"),
-    YAHOO("yahoo")
+    YAHOO("yahoo"),
+    TWITTER("twitter"),
     ;
 
     private String name;

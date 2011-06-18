@@ -12,6 +12,7 @@ public class OAuthUser {
     // parameter
     private String providerUserId;
     private String name;
+    private String nickname;
     private String eMail;
 
     // type
@@ -51,6 +52,14 @@ public class OAuthUser {
         this.name = name;
     }
 
+
+    public String getNickname() {
+        return nickname;
+    }
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+    
 
     public OAuthType getOAuthType() {
         return oAuthType;

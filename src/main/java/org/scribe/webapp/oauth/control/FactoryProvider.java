@@ -18,6 +18,8 @@ public class FactoryProvider {
             return new ProviderGoogle();
         } else if(oAuthType == OAuthType.YAHOO) {
             return new ProviderYahoo();
+        } else if(oAuthType == OAuthType.TWITTER) {
+            return new ProviderTwitter();
         } else {
             throw new IllegalArgumentException("Unsupported OAuth provider: " + oAuthType.getName());
         }
