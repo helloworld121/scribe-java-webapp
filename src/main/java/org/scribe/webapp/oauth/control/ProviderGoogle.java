@@ -24,8 +24,8 @@ public class ProviderGoogle
                 .provider(GoogleApi.class)
                 .apiKey("anonymous")
                 .apiSecret("anonymous")
-                .scope("http://www.google.com/m8/feeds/")
-                .callback("http://localhost:8080/callbackoauth")
+                .scope("https://www.google.com/m8/feeds/")
+                .callback("http://localhost:8080/scribe-java-webapp/callbackoauth")
                 .build();
         Token token = service.getRequestToken();
         log.info("requestToken: " + token);
@@ -48,8 +48,8 @@ public class ProviderGoogle
                 .provider(GoogleApi.class)
                 .apiKey("anonymous")
                 .apiSecret("anonymous")
-                .scope("http://www.google.com/m8/feeds/")
-                .callback("http://localhost:8080/callbackoauth")
+                .scope("https://www.google.com/m8/feeds/")
+                .callback("http://localhost:8080/scribe-java-webapp/callbackoauth")
                 .build();
 
         Verifier verifier = new Verifier(user.getOAuthVerifier());
@@ -57,7 +57,7 @@ public class ProviderGoogle
         Token accessToken = service.getAccessToken(token, verifier);
 
 
-        OAuthRequest request = new OAuthRequest(Verb.GET, "http://www.google.com/m8/feeds/contacts/default/full");
+        OAuthRequest request = new OAuthRequest(Verb.GET, "https://www.google.com/m8/feeds/contacts/default/full");
         service.signRequest(accessToken, request);
         request.addHeader("GData-Version", "3.0");
 
